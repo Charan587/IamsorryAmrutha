@@ -1,0 +1,256 @@
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Forgive Me Yet?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap">
+<style>
+  :root {
+    --ground:  #EEF0FF;
+    --ground2: #E0E4FF;
+    --card:    #FFFFFF;
+    --ink:     #272455;
+    --muted:   #6F6CA0;
+    --accent:  #6C63D6;
+    --accent-d:#524AB8;
+    --coral:   #FF7A6B;
+    --line:    #D9DCF7;
+    --shadow:  0 24px 60px rgba(39, 36, 85, .13);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:  #16163A;
+      --ground2: #1E1D4C;
+      --card:    #221F4A;
+      --ink:     #E9E8FF;
+      --muted:   #A9A6D8;
+      --accent:  #8F87F5;
+      --accent-d:#A69FFF;
+      --coral:   #FF8E80;
+      --line:    #342F66;
+      --shadow:  0 24px 60px rgba(0, 0, 0, .4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:  #16163A;
+    --ground2: #1E1D4C;
+    --card:    #221F4A;
+    --ink:     #E9E8FF;
+    --muted:   #A9A6D8;
+    --accent:  #8F87F5;
+    --accent-d:#A69FFF;
+    --coral:   #FF8E80;
+    --line:    #342F66;
+    --shadow:  0 24px 60px rgba(0, 0, 0, .4);
+  }
+
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    background-image: radial-gradient(110% 80% at 50% 0%, var(--ground2) 0%, var(--ground) 65%);
+    color: var(--ink);
+    font-family: "Nunito", ui-sans-serif, system-ui, sans-serif;
+    display: grid;
+    place-items: center;
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    width: 100%;
+    padding-inline: 20px;
+    padding-block: clamp(2rem, 7vh, 4rem);
+    display: grid;
+    place-items: center;
+  }
+
+  .card {
+    width: min(33rem, 100%);
+    background: var(--card);
+    border-radius: 26px;
+    box-shadow: var(--shadow);
+    padding: clamp(1.75rem, 5vw, 2.6rem);
+    text-align: center;
+  }
+
+  .kicker {
+    font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 1rem;
+  }
+
+  h1 {
+    font-family: "Fredoka", ui-rounded, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 1.3rem + 3.6vw, 3rem);
+    line-height: 1.1;
+    text-wrap: balance;
+    margin: 0 0 1rem;
+    color: var(--accent-d);
+  }
+
+  p { line-height: 1.7; margin: 0 0 1rem; }
+  .lead { font-size: clamp(1rem, .96rem + .2vw, 1.1rem); }
+  .muted { color: var(--muted); }
+
+  /* who it's for */
+  .who {
+    display: flex; flex-wrap: wrap; gap: .6rem;
+    align-items: center; justify-content: center;
+    margin: 0 0 1.6rem;
+  }
+  .who label { font-size: .9rem; color: var(--muted); }
+  .who input {
+    font: inherit; font-size: 1rem;
+    padding: .5em .9em;
+    width: min(12rem, 100%);
+    color: var(--ink);
+    background: var(--ground);
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    text-align: center;
+  }
+  .who input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .ask {
+    font-family: "Fredoka", ui-rounded, system-ui, sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.25rem, 1.1rem + .9vw, 1.6rem);
+    margin: 1.6rem 0 1rem;
+  }
+
+  .buttons {
+    position: relative;
+    display: flex; flex-wrap: wrap; gap: .9rem;
+    align-items: center; justify-content: center;
+    min-height: 4.5rem;
+  }
+  button {
+    font-family: "Fredoka", ui-rounded, system-ui, sans-serif;
+    font-weight: 500;
+    border: 0; border-radius: 999px; cursor: pointer;
+    padding: .72em 1.9em;
+    transition: transform .18s ease, background-color .18s ease, font-size .18s ease;
+  }
+  button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+  #yes {
+    background: var(--accent); color: #fff; font-size: 1.05rem;
+    box-shadow: 0 10px 24px rgba(108, 99, 214, .32);
+  }
+  #yes:hover { transform: translateY(-2px); background: var(--accent-d); }
+
+  #no {
+    background: transparent; color: var(--muted);
+    border: 2px solid var(--line); font-size: 1rem;
+  }
+  #no.loose { position: absolute; }
+
+  .promises { display: grid; gap: .8rem; margin: 1.5rem 0 0; padding: 0; list-style: none; text-align: left; }
+  .promises li { display: flex; gap: .8rem; align-items: flex-start; line-height: 1.55; }
+  .promises .dot {
+    flex: none; width: 1.5rem; height: 1.5rem; margin-top: .15rem;
+    border-radius: 50%; background: var(--ground2);
+    display: grid; place-items: center; font-size: .8rem;
+  }
+
+  .thanks h2 {
+    font-family: "Fredoka", ui-rounded, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 1.25rem + 2.6vw, 2.5rem);
+    color: var(--accent-d); margin: 0 0 .7rem; text-wrap: balance;
+  }
+  .again {
+    margin-top: 1.3rem; background: transparent; color: var(--muted);
+    border: 2px solid var(--line); font-size: .9rem; padding: .5em 1.3em;
+  }
+  .hint { font-size: .85rem; color: var(--muted); margin-top: 1.4rem; }
+</style>
+
+<div class="wrap">
+  <section class="card" id="ask-card">
+    <p class="kicker">a proper apology</p>
+    <h1 id="head">I'm sorry.</h1>
+
+    <div class="who">
+      <label for="name">Who's this for?</label>
+      <input id="name" type="text" placeholder="their name" autocomplete="off" maxlength="24">
+    </div>
+
+    <p class="lead">I got it wrong, and I'm not going to explain my way out of it.
+    You weren't being difficult — I just didn't listen properly.</p>
+
+    <p class="lead muted">You don't have to be okay about it yet. I'd just rather you
+    heard it from me than waited for me to pretend nothing happened.</p>
+
+    <p class="ask">So… do you forgive me?</p>
+
+    <div class="buttons" id="buttons">
+      <button id="yes" type="button">Yes 💗</button>
+      <button id="no" type="button">No</button>
+    </div>
+
+    <p class="hint">Put a name in, then share the link.</p>
+  </section>
+
+  <section class="card thanks" id="thanks-card" hidden>
+    <p class="kicker">thank you</p>
+    <h2 id="thanks-head">Thank you 💗</h2>
+    <p class="lead muted">That's more than I'd earned, and I know it.</p>
+
+    <ul class="promises">
+      <li><span class="dot" aria-hidden="true">💌</span><span>I'm <b>really sorry</b> — and I'll prove it, not just repeat it.</span></li>
+      <li><span class="dot" aria-hidden="true">🤝</span><span>I'll <b>always be there for you</b>, no matter what.</span></li>
+      <li><span class="dot" aria-hidden="true">💖</span><span>And I'll <b>always love you</b> — always.</span></li>
+    </ul>
+
+    <button class="again" id="again" type="button">Read it again</button>
+  </section>
+</div>
+
+<script>
+  const nameInput = document.getElementById('name');
+  const head = document.getElementById('head');
+  const thanksHead = document.getElementById('thanks-head');
+
+  nameInput.addEventListener('input', function () {
+    const who = nameInput.value.trim();
+    head.textContent = who ? 'I’m sorry, ' + who + '.' : 'I’m sorry.';
+    thanksHead.textContent = who ? 'Thank you, ' + who + ' \u{1F497}' : 'Thank you \u{1F497}';
+  });
+
+  const yes = document.getElementById('yes');
+  const no = document.getElementById('no');
+  const buttons = document.getElementById('buttons');
+  const askCard = document.getElementById('ask-card');
+  const thanksCard = document.getElementById('thanks-card');
+
+  const nos = ['No', 'Are you sure?', 'Really sure?', 'Think about it…',
+               'Last chance!', 'Please? 🥺', 'Pretty please 🥺'];
+  let n = 0, size = 1.05;
+
+  function dodge() {
+    const box = buttons.getBoundingClientRect();
+    const b = no.getBoundingClientRect();
+    no.classList.add('loose');
+    no.style.left = (Math.random() * Math.max(0, box.width - b.width)) + 'px';
+    no.style.top = (Math.random() * Math.max(0, box.height - b.height)) + 'px';
+  }
+
+  no.addEventListener('click', function () {
+    n++;
+    no.textContent = nos[Math.min(n, nos.length - 1)];
+    size = Math.min(size + 0.22, 2.3);
+    yes.style.fontSize = size + 'rem';
+    no.style.fontSize = Math.max(0.72, 1 - n * 0.05) + 'rem';
+    if (n >= 2) dodge();
+  });
+  no.addEventListener('pointerenter', function (e) {
+    if (e.pointerType !== 'touch' && n >= 1) dodge();
+  });
+
+  yes.addEventListener('click', function () {
+    askCard.hidden = true; thanksCard.hidden = false;
+  });
+  document.getElementById('again').addEventListener('click', function () {
+    thanksCard.hidden = true; askCard.hidden = false;
+  });
+</script>

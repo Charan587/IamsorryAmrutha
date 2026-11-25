@@ -1,0 +1,309 @@
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Sorry, Amrutha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground:  #FFF0F3;
+    --ground2: #FFE3EA;
+    --card:    #FFFFFF;
+    --ink:     #4A2A35;
+    --muted:   #8A6872;
+    --rose:    #E8617E;
+    --rose-d:  #C9435F;
+    --mint:    #4FB8A0;
+    --shadow:  28px 28px 60px rgba(201, 67, 95, .14);
+  }
+  :root:not([data-theme="light"]) { }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:  #2A1620;
+      --ground2: #381C29;
+      --card:    #3A1F2B;
+      --ink:     #FFE9EF;
+      --muted:   #D3A7B4;
+      --rose:    #FF8098;
+      --rose-d:  #FF5C7C;
+      --mint:    #5FD0B6;
+      --shadow:  28px 28px 60px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:  #2A1620;
+    --ground2: #381C29;
+    --card:    #3A1F2B;
+    --ink:     #FFE9EF;
+    --muted:   #D3A7B4;
+    --rose:    #FF8098;
+    --rose-d:  #FF5C7C;
+    --mint:    #5FD0B6;
+    --shadow:  28px 28px 60px rgba(0, 0, 0, .35);
+  }
+
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    background-image: radial-gradient(120% 90% at 50% 0%, var(--ground2) 0%, var(--ground) 60%);
+    color: var(--ink);
+    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    display: grid;
+    place-items: center;
+    overflow-x: hidden;
+  }
+
+  /* floating hearts, purely ambient */
+  .hearts { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+  .hearts i {
+    position: absolute; bottom: -40px;
+    font-style: normal; font-size: 22px; opacity: .35;
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hearts { display: none; } }
+
+  .wrap {
+    position: relative; z-index: 1;
+    width: 100%;
+    padding-inline: 20px;
+    padding-block: clamp(2rem, 7vh, 4rem);
+    display: grid;
+    place-items: center;
+  }
+
+  .card {
+    width: min(34rem, 100%);
+    background: var(--card);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: clamp(1.75rem, 5vw, 2.75rem);
+    text-align: center;
+  }
+
+  .kicker {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 .9rem;
+  }
+
+  h1 {
+    font-family: "Baloo 2", ui-rounded, system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 1.3rem + 4vw, 3.2rem);
+    line-height: 1.08;
+    text-wrap: balance;
+    margin: 0 0 1.1rem;
+    color: var(--rose-d);
+  }
+  h1 .wave { display: inline-block; animation: wobble 2.6s ease-in-out infinite; }
+  @keyframes wobble { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(8deg)} }
+  @media (prefers-reduced-motion: reduce) { h1 .wave { animation: none } }
+
+  p { line-height: 1.7; margin: 0 0 1rem; }
+  .lead { font-size: clamp(1rem, .96rem + .2vw, 1.12rem); }
+  .muted { color: var(--muted); }
+
+  .ask {
+    font-family: "Baloo 2", ui-rounded, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+    margin: 1.8rem 0 1.1rem;
+    color: var(--ink);
+  }
+
+  .buttons {
+    position: relative;
+    display: flex; flex-wrap: wrap; gap: .9rem;
+    align-items: center; justify-content: center;
+    min-height: 4.5rem;
+  }
+  button {
+    font-family: "Baloo 2", ui-rounded, system-ui, sans-serif;
+    font-weight: 600;
+    border: 0; border-radius: 999px; cursor: pointer;
+    padding: .72em 1.9em;
+    transition: transform .18s ease, background-color .18s ease, font-size .18s ease;
+  }
+  button:focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; }
+
+  #yes {
+    background: var(--rose); color: #fff;
+    font-size: 1.05rem;
+    box-shadow: 0 10px 24px rgba(201,67,95,.3);
+  }
+  #yes:hover { transform: translateY(-2px); background: var(--rose-d); }
+
+  #no {
+    background: transparent; color: var(--muted);
+    border: 2px solid var(--muted);
+    font-size: 1rem;
+  }
+  #no.loose { position: absolute; }
+
+  /* ---- the promises ---- */
+  .promises { display: grid; gap: .85rem; margin: 1.6rem 0 0; padding: 0; list-style: none; text-align: left; }
+  .promises li {
+    display: flex; gap: .8rem; align-items: flex-start;
+    font-size: clamp(1rem, .95rem + .25vw, 1.14rem);
+    line-height: 1.55;
+  }
+  .promises b { font-weight: 600; }
+  .promises .dot {
+    flex: none; width: 1.55rem; height: 1.55rem; margin-top: .1rem;
+    border-radius: 50%; background: var(--ground2);
+    display: grid; place-items: center; font-size: .85rem;
+  }
+
+  .thanks h2 {
+    font-family: "Baloo 2", ui-rounded, system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 1.3rem + 3vw, 2.7rem);
+    color: var(--rose-d);
+    margin: 0 0 .8rem;
+    text-wrap: balance;
+  }
+  .sign {
+    margin-top: 1.6rem; font-size: .95rem; color: var(--muted);
+  }
+  .again {
+    margin-top: 1.2rem; background: transparent; color: var(--muted);
+    border: 2px solid var(--muted); font-size: .9rem; padding: .5em 1.3em;
+  }
+</style>
+
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<div class="wrap">
+  <!-- asking -->
+  <section class="card" id="ask-card">
+    <p class="kicker">for Amrutha</p>
+    <h1>I'm really, really sorry <span class="wave">🥺</span></h1>
+
+    <p class="lead">I'm sorry if I did anything to hurt you. I'm not going to argue about it
+    or explain my way around it — if it hurt you, that's reason enough for me to be sorry.</p>
+
+    <p class="lead muted">And whatever this is, we're in it together. I'm not going anywhere,
+    and I'm never leaving you to deal with anything on your own.</p>
+
+    <p class="ask">Do you forgive me?</p>
+
+    <div class="buttons" id="buttons">
+      <button id="yes" type="button">Yes 💗</button>
+      <button id="no" type="button">No</button>
+    </div>
+  </section>
+
+  <!-- forgiven -->
+  <section class="card thanks" id="thanks-card" hidden>
+    <p class="kicker">thank you</p>
+    <h2>We're in this together 💗</h2>
+    <p class="lead muted">And we're going to come out of it happy, just like this.</p>
+
+    <ul class="promises">
+      <li><span class="dot" aria-hidden="true">💌</span><span>I am <b>really sorry</b> if I did anything to hurt you.</span></li>
+      <li><span class="dot" aria-hidden="true">🤝</span><span>I'll <b>always be there for you</b>, no matter what.</span></li>
+      <li><span class="dot" aria-hidden="true">🫂</span><span>I'm <b>never going to leave you alone</b> — not with anything.</span></li>
+      <li><span class="dot" aria-hidden="true">🌻</span><span>We're <b>in this together</b>, and we're staying in it.</span></li>
+      <li><span class="dot" aria-hidden="true">💖</span><span>And I <b>love you</b>. Always.</span></li>
+    </ul>
+
+    <p class="sign">— Charan</p>
+    <button class="again" id="again" type="button">Read it again</button>
+  </section>
+</div>
+
+<script>
+  // ambient hearts
+  (function () {
+    const box = document.getElementById('hearts');
+    const glyphs = ['💗', '💕', '💞', '🩷', '💘'];
+    for (let i = 0; i < 14; i++) {
+      const h = document.createElement('i');
+      h.textContent = glyphs[i % glyphs.length];
+      h.style.left = (Math.random() * 96) + 'vw';
+      h.style.fontSize = (16 + Math.random() * 18) + 'px';
+      h.style.animationDuration = (11 + Math.random() * 10) + 's';
+      h.style.animationDelay = (-Math.random() * 18) + 's';
+      box.appendChild(h);
+    }
+  })();
+
+  const yes = document.getElementById('yes');
+  const no = document.getElementById('no');
+  const buttons = document.getElementById('buttons');
+  const askCard = document.getElementById('ask-card');
+  const thanksCard = document.getElementById('thanks-card');
+
+  const nos = ['No', 'Are you sure?', 'Really sure?', 'Think again…',
+               'Last chance!', 'You might regret this', 'Please? 🥺', 'Pretty please 🥺'];
+  let n = 0;
+  let size = 1.05;
+
+  function dodge() {
+    const box = buttons.getBoundingClientRect();
+    const b = no.getBoundingClientRect();
+    const maxX = Math.max(0, box.width - b.width);
+    const maxY = Math.max(0, box.height - b.height);
+    no.classList.add('loose');
+    no.style.left = (Math.random() * maxX) + 'px';
+    no.style.top = (Math.random() * maxY) + 'px';
+  }
+
+  // put the question back exactly as a first-time visitor sees it
+  function reset() {
+    n = 0;
+    size = 1.05;
+    yes.style.fontSize = size + 'rem';
+    no.textContent = nos[0];
+    no.style.fontSize = '1rem';
+    no.classList.remove('loose');
+    no.style.left = '';
+    no.style.top = '';
+  }
+
+  function refuse() {
+    n++;
+    no.textContent = nos[Math.min(n, nos.length - 1)];
+    size = Math.min(size + 0.18, 1.9);
+    yes.style.fontSize = size + 'rem';
+    no.style.fontSize = Math.max(0.78, 1 - n * 0.04) + 'rem';
+    if (n >= 2) dodge();
+  }
+
+  no.addEventListener('click', refuse);
+  no.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch' && n >= 1) dodge(); });
+
+  yes.addEventListener('click', function () {
+    askCard.hidden = true;
+    thanksCard.hidden = false;
+    burst();
+  });
+
+  document.getElementById('again').addEventListener('click', function () {
+    thanksCard.hidden = true;
+    askCard.hidden = false;
+    reset();
+  });
+
+  // always open on a clean question, whatever a previous visit left behind
+  reset();
+
+  // a small shower of hearts on yes
+  function burst() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const box = document.getElementById('hearts');
+    for (let i = 0; i < 22; i++) {
+      const h = document.createElement('i');
+      h.textContent = '💗';
+      h.style.left = (Math.random() * 96) + 'vw';
+      h.style.fontSize = (20 + Math.random() * 26) + 'px';
+      h.style.opacity = '.75';
+      h.style.animationDuration = (5 + Math.random() * 4) + 's';
+      box.appendChild(h);
+      setTimeout(function () { h.remove(); }, 9000);
+    }
+  }
+</script>
